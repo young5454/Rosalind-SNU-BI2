@@ -45,7 +45,7 @@ def profile_most_probable(text, k, prob_list):
 
 
 if __name__ == '__main__':
-    with open("rosalind_ba2c.txt") as file:
+    with open(".rosalind_ba2c.txt") as file:
         data_list = []
         for line in file:
             cleaned_line = line.strip()
