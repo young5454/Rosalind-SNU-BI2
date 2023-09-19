@@ -8,6 +8,7 @@ def DPChange(money, coins):
                     min_num_coins[m] = min_num_coins[(m - coins[i])] + 1
     return min_num_coins[money]
 
+
 if __name__ == '__main__':
     with open("rosalind_ba5a.txt") as file:
         data_list = []

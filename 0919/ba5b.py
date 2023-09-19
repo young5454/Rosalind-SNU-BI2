@@ -17,10 +17,11 @@ def longest_path(n, m, right_matrix, down_matrix):
             y = grid[i+1, j] + right_matrix[i+1, j]
             maxy = max(x, y)
             grid[i+1, j+1] = maxy
-    # Longest path
-    max_path = grid[n, m]
 
-    return max_path
+    # Longest path score
+    max_path_score = grid[n, m]
+
+    return max_path_score
 
 
 if __name__ == '__main__':
