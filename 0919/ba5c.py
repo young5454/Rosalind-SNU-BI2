@@ -1,6 +1,6 @@
 import numpy as np
 
-def longest_path_with_diagonal(n, m, right_matrix, down_matrix, diagonal_matrix, diagonal_with_bases_matrix):
+def longest_common_sequence(n, m, right_matrix, down_matrix, diagonal_matrix, diagonal_with_bases_matrix):
 
     # Initialize zero matrix
     path_grid = np.zeros((n+1, m+1), dtype=object)
@@ -81,4 +81,4 @@ if __name__ == '__main__':
                 else:
                     diagonal_matrix[i, j] = 0
 
-        print(longest_path_with_diagonal(n, m, right_matrix, down_matrix, diagonal_matrix, diagonal_with_bases_matrix))
+        print(longest_common_sequence(n, m, right_matrix, down_matrix, diagonal_matrix, diagonal_with_bases_matrix))
