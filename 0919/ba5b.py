@@ -1,6 +1,7 @@
 import numpy as np
 
 def longest_path(n, m, right_matrix, down_matrix):
+    
     # Initialize zero matrix
     grid = np.zeros((n+1, m+1), dtype=int)
 
