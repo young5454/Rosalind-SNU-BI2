@@ -14,11 +14,11 @@ def longest_common_sequence(n, m, right_matrix, down_matrix, diagonal_matrix, di
 
     grid = np.zeros((n+1, m+1), dtype=int)
 
-    # Fill row and column
-    for i in range(n):
-        grid[i+1, 0] = grid[i, 0] + down_matrix[i, 0]
-    for j in range(m):
-        grid[0, j+1] = grid[0, j] + right_matrix[0, j]
+    # # Fill row and column
+    # for i in range(n):
+    #     grid[i+1, 0] = grid[i, 0] + down_matrix[i, 0]
+    # for j in range(m):
+    #     grid[0, j+1] = grid[0, j] + right_matrix[0, j]
 
     # Fill the rest
     for i in range(n):
