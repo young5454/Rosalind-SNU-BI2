@@ -1,34 +1,47 @@
 import numpy as np
 from collections import deque
+from collections import defaultdict
 
-def topological_sort(in_graph_dic, out_graph_dic, source, sink):
+def topological_sort(no_inward_nodes, no_outward_nodes, in_graph_dic, out_graph_dic):
 
     # Count number of incoming nodes for each node. Source node = 0
-    indegree = {source: 0}
+    indegree = {}
+    outdegree = {}
+    for node in no_inward_nodes:
+        indegree[node] = 0
+
     for node in in_graph_dic.keys():
         incoming = in_graph_dic[node]
         incoming_nodes_num = len(incoming.keys())
         indegree[node] = incoming_nodes_num
     
-    print(indegree)
+    for node in no_outward_nodes:
+        outdegree[node] = 0
+
+    for node in out_graph_dic.keys():
+        outgoing = out_graph_dic[node]
+        outgoing_nodes_sum = len(outgoing.keys())
+        outdegree[node] = outgoing_nodes_sum
 
     # Initialize queue with source node
     q = deque()
-    q.append(source)
+    for node in no_inward_nodes:
+        q.append(node)
     result = []
-
     # 
     while q:
         now = q.popleft()
-        result.append(now)
-        for g in out_graph_dic[now].values():
-            if g != sink:
+        if outdegree[now] == 0:
+            result.append(now)
+        else:
+            result.append(now)
+            for g in out_graph_dic[now].values():
                 indegree[g] -= 1
                 if indegree[g] == 0:
                     q.append(g)
-    result.append(sink)
+    
+    print(indegree)
     return result
-
 
 def longest_path_in_dag(in_graph_dic, out_graph_dic, source, sink):
 
@@ -92,37 +105,52 @@ if __name__ == '__main__':
         source = data_list[0]
         sink = data_list[1]
 
-        # In-graph: key = node, value = incoming nodes with weights
-        # In-graph does not have source node
-        in_graph_dic = {}
+        in_graph = {}
+        out_graph = {}
+        all_nodes = []
+        outward_nodes = []      # No outward-going nodes
+        inward_nodes = []       # No inward-coming nodes
+
         for entry in data_list[2:]:
             first , _ = entry.split('->')
             second, weight = _.split(':')
             weight = int(weight)
-            if second in in_graph_dic.keys():
-                curr = in_graph_dic[second]
+
+            # Make all-nodes list
+            all_nodes.append(first)
+            all_nodes.append(second)
+            outward_nodes.append(first)
+            inward_nodes.append(second)
+
+            # Make graph
+            if first in out_graph.keys():
+                curr = out_graph[first]
+                curr[weight] = second 
+            else:
+                out_graph[first] = {weight:second}
+            
+            if second in in_graph.keys():
+                curr = in_graph[second]
                 curr[weight] = first
             else:
-                in_graph_dic[second] = {weight: first}
-        # Out-graph: key = node, value = outgoing nodes with weights
-        # Out-graph does not have sink node
-        out_graph_dic = {}
-        for entry in data_list[2:]:
-            first , _ = entry.split('->')
-            second, weight = _.split(':')
-            weight = int(weight)
-            if first in out_graph_dic.keys():
-                curr = out_graph_dic[first]
-                curr[weight] = second
-            else:
-                out_graph_dic[first] = {weight: second}
+                in_graph[second] = {weight: first}
 
-    # print(in_graph_dic)
-    # print(out_graph_dic)
-    print(topological_sort(in_graph_dic, out_graph_dic, source, sink))
-    print(longest_path_in_dag(in_graph_dic, out_graph_dic, source, sink)[0])
-    print(longest_path_in_dag(in_graph_dic, out_graph_dic, source, sink)[1])
-    print(longest_path_in_dag(in_graph_dic, out_graph_dic, source, sink)[2])
+        all_nodes = set(all_nodes)
+        outward_nodes = set(outward_nodes)
+        inward_nodes = set(inward_nodes)
 
+        no_outward_nodes = []
+        no_inward_nodes = []
+        for node in all_nodes:
+            if node not in outward_nodes:
+                no_outward_nodes.append(node)
+            if node not in inward_nodes:
+                no_inward_nodes.append(node)
 
+        print(len(all_nodes))
+        print(out_graph)
+        print(in_graph)
+        print(no_outward_nodes)
+        print(no_inward_nodes)
+        print(len(topological_sort(no_inward_nodes, no_outward_nodes, in_graph, out_graph)))
 
