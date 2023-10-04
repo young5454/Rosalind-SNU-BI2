@@ -39,8 +39,6 @@ def affine_gap_alignment(seq1, seq2, n, m, gap_opening, gap_extension):
     middle_path_grid[0, 0] = 'none'
     upper_path_grid[0, 0] = 'none'
 
-    # test
-
     # # Fill row and column
     # for i in range(n):
     #     path_grid[i+1, 0] = 'down '
