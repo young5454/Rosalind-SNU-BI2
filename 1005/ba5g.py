@@ -16,18 +16,20 @@ def edit_distance(seq1, seq2, n, m, sigma):
             seq1_base = seq1[i]
             seq2_base = seq2[j]
             if seq1_base == seq2_base:
+                # Matches are +0
                 x = grid[i, j+1] - sigma
                 y = grid[i+1, j] - sigma
                 z = grid[i, j]
                 maxyz = max(x, y, z)
             else:
+                # Mismatches and indels are -1
                 x = grid[i, j+1] - sigma
                 y = grid[i+1, j] - sigma
                 z = grid[i, j] - 1
                 maxyz = max(x, y, z)
             grid[i+1, j+1] = maxyz
 
-    max_score = grid[n, m]
+    max_score = -(grid[n, m])
 
     return max_score, grid
 
@@ -41,5 +43,5 @@ if __name__ == '__main__':
         m = len(seq2)
         sigma = 1
 
-        print(-edit_distance(seq1, seq2, n, m, sigma)[0])
+        print(edit_distance(seq1, seq2, n, m, sigma)[0])
         # print(edit_distance(seq1, seq2, n, m, sigma)[1])

@@ -52,8 +52,8 @@ def overlap_alignment(seq1, seq2, n, m, sigma):
     column_list = []
     for column in range(m):
         column_list.append(grid[n, column])
-        max_value = max(column_list)
-        j = column_list.index(max_value)
+    max_value = max(column_list)
+    j = column_list.index(max_value)
     max_score = grid[n, j]
 
     # Get the index of the max_score

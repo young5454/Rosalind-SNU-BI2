@@ -90,11 +90,11 @@ def global_alignment(seq1, seq2, n, m):
     # Finalize common subsequence
     longest_path_seq1.reverse()
     longest_path_seq2.reverse()
-    common_subsequence1 = ''.join(longest_path_seq1)
-    common_subsequence2 = ''.join(longest_path_seq2)
+    aligned_sequence1 = ''.join(longest_path_seq1)
+    aligned_sequence2 = ''.join(longest_path_seq2)
     max_score = grid[n, m]
 
-    return max_score, common_subsequence1, common_subsequence2
+    return max_score, aligned_sequence1, aligned_sequence2
 
 
 if __name__ == '__main__':
