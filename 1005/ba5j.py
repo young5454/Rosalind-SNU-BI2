@@ -27,7 +27,7 @@ blosum62 = {
 
 def affine_gap_alignment(seq1, seq2, n, m, gap_opening, gap_extension):
 
-    # Initialize three zero matrices!
+    # Initialize three zero matrices
     lower_grid = np.zeros((n+1, m+1), dtype=int)    # Insertions
     middle_grid = np.zeros((n+1, m+1), dtype=int)   # Matches/mismatches
     upper_grid = np.zeros((n+1, m+1), dtype=int)    # Deletions
