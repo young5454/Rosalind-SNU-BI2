@@ -187,7 +187,6 @@ def global_alignment(seq1, seq2, n, m, sigma):
                 path_grid[i+1, j+1] = 'diag '
             grid[i+1, j+1] = maxyz
 
-
     # Longest path
     p = n
     q = m
