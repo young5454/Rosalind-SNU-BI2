@@ -69,6 +69,7 @@ def middle_column_score(seq1, seq2, n, m, sigma):
 
     return middle_column, path_grid
 
+
 def middle_column_odd(seq1, seq2, n, m, sigma):
 
     # Initialize the score columns.
@@ -148,6 +149,7 @@ def get_middle(seq1, seq2, n, m, sigma):
         
     return coordinates
 
+
 def global_alignment(seq1, seq2, n, m, sigma):
 
     # Initialize zero matrix
@@ -190,32 +192,34 @@ def global_alignment(seq1, seq2, n, m, sigma):
     # Longest path
     p = n
     q = m
-    dir_list = []
-    coord_list = []
+    longest_path_seq1 = []
+    longest_path_seq2 = []
     while p >= 0 and q >= 0:
         direction = path_grid[p, q]
         if direction == 'down ':
             p -= 1
-            dir_list.append(direction)
-            coord_list.append((p, q))
+            longest_path_seq1.append(seq1[p])
+            longest_path_seq2.append('-')
         elif direction == 'right':
             q -= 1
-            dir_list.append(direction)
-            coord_list.append((p, q))
+            longest_path_seq1.append('-')
+            longest_path_seq2.append(seq2[q])
         elif direction == 'diag ':
             p -= 1
             q -= 1
-            dir_list.append(direction)
-            coord_list.append((p, q))
+            longest_path_seq1.append(seq1[p])
+            longest_path_seq2.append(seq2[q])
         else:
             break
 
     # Finalize common subsequence
+    longest_path_seq1.reverse()
+    longest_path_seq2.reverse()
+    aligned_sequence1 = ''.join(longest_path_seq1)
+    aligned_sequence2 = ''.join(longest_path_seq2)
     max_score = grid[n, m]
-    dir_list.reverse()
-    coord_list.reverse()
 
-    return max_score, dir_list, coord_list, path_grid, grid
+    return max_score, aligned_sequence1, aligned_sequence2
 
 
 if __name__ == '__main__':
@@ -228,4 +232,5 @@ if __name__ == '__main__':
 
         sigma = 5
 
-        print(get_middle(seq1, seq2, n, m, sigma))
+        middle, next = get_middle(seq1, seq2, n, m, sigma)
+        print(str(middle) + ' ' + str(next))
