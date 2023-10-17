@@ -1,13 +1,7 @@
 import numpy as np
+from ba8a import euclidean
 
-# Distortion(Data,Centers) = (1/n) ∑all points DataPoint in Data d(DataPoint, Centers)2.
-
-def euclidean(point1, point2):
-    # Calculate Euclidean distance between two data points
-    squared = np.sum(np.square(point1 - point2))
-    distance = np.sqrt(squared)
-    return distance
-
+# Distortion(Data,Centers) = (1/n) ∑all points DataPoint in Data d(DataPoint, Centers)^2
 
 def distortion(data_points, centers):
     # Returns the mean squared distance from each data point to its nearest center
