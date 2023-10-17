@@ -58,7 +58,6 @@ if __name__ == '__main__':
             float_data = np.array([float(data) for data in data_point])
             data_list.append(float_data)
         
-        # print(data_list)
         centers = farthest_first_travel(data_list, k)
         for data_point in centers:
             print(' '.join(str(a) for a in data_point))
