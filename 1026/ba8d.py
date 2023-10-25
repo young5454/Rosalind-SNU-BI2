@@ -3,12 +3,11 @@ import math
 
 def euclidean(point1, point2):
     # Calculate Euclidean distance between two data points
-    squared = np.sum(np.square(point1 - point2))
-    distance = np.sqrt(squared)
-    return distance
+    return ((point1 - point2) ** 2).sum() ** .5
 
 
 def hidden_matrix(data_points, centers, beta):
+    # Calculates the hidden matrix for every center update
     n = len(data_points)
     k = len(centers)
     hidden_matrix = np.zeros((k, n))
@@ -27,6 +26,7 @@ def hidden_matrix(data_points, centers, beta):
 
 
 def update_centers(data_points, centers, hidden_matrix):
+    # Update centers using hidden matrix
     m = len(data_points[0])
     k = len(centers)
 
@@ -49,6 +49,7 @@ def update_centers(data_points, centers, hidden_matrix):
 
 
 def soft_kmeans(data_points, centers, steps, beta):
+    # Main code
     counter = 0
     while counter < steps:
         # E-step

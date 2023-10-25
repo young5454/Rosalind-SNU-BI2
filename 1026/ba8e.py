@@ -32,6 +32,8 @@ def calculate_distance(cluster1, cluster2, distance_matrix):
 def hierarchical_clustering(n, distance_matrix, original_distance_matrix):
     # Initial clusters: [[index], num_of_nodes]
     clusters = [[[i], 1] for i in range(n)]
+
+    # Initate final result string (tree)
     result = ''
     
     while len(clusters) > 1:
@@ -55,14 +57,13 @@ def hierarchical_clustering(n, distance_matrix, original_distance_matrix):
         current_nodes = min_i_cluster[0]
         num_nodes = min_i_cluster[1]
         current_nodes.extend(min_j_cluster[0])
-
-        checkpoints = ' '.join(str(x+1) for x in current_nodes)
-        result += checkpoints + '\n'
-
-
         num_nodes += min_j_cluster[1]
         c_new = [current_nodes, num_nodes]
         clusters.append(c_new)
+
+        # Update tree for currently merged cluster
+        checkpoints = ' '.join(str(x+1) for x in current_nodes)
+        result += checkpoints + '\n'
 
         # Remove Ci and Cj from clusters
         clusters.remove(min_i_cluster)
