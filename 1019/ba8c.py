@@ -65,3 +65,8 @@ if __name__ == '__main__':
         centers = kmeans(data_list, k)
         for data_point in centers:
             print(' '.join(str(f"{a:.3f}") for a in data_point))
+
+
+## 102423 수업 코드
+# def distance(a, b):
+#     return ((a - b) ** 2).sum() ** .5
