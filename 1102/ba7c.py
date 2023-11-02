@@ -17,6 +17,8 @@ from ba7b import limblength
 #     add leaf n back to T by creating a limb (v, n) of length limbLength
 #     return T
 
+# This code doesn't work :(
+
 def three_leaves(matrix, n, curr):
     # (i,n,k) ← three leaves such that Di,k = Di,n + Dn,k
     limb_length_of_curr = limblength(matrix, curr, n)
