@@ -6,12 +6,12 @@ import numpy as np
 #  for every node v in T 
 #   Age(v) ← 0
 #  while there is more than one cluster 
-#   find the two closest clusters Ci and Cj  
+#   find the two closest clusters Ci and Cj 
 #   merge Ci and Cj into a new cluster Cnew with |Ci| + |Cj| elements
 #   add a new node labeled by cluster Cnew to T
-#   connect node Cnew to Ci and Cj by directed edges 
-#   remove the rows and columns of D corresponding to Ci and Cj 
-#   remove Ci and Cj from Clusters 
+#   connect node Cnew to Ci and Cj by directed edges
+#   remove the rows and columns of D corresponding to Ci and Cj
+#   remove Ci and Cj from Clusters
 #   add a row/column to D for Cnew by computing D(Cnew, C) for each C in Clusters
 #   add Cnew to Clusters 
 #  root ← the node in T corresponding to the remaining cluster
