@@ -1,0 +1,10 @@
+0.392
+--------
+A	B	C	D	E
+--------
+DCCD--DDD
+DC--CCDED
+DCBDBED-D
+DCCDEE-DA
+-CCDEECDD
+-CCD--CDD

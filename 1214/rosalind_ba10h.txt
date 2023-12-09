@@ -1,0 +1,7 @@
+yxyzxxxyzyzxzzyzzzyyxzxyxxzzyzzzxzzzyzzxzzzyyxyxzzzzzxzxyzzxxxxyyyxyyzyzyyyyxxyyxzyyyzzxxxxxxxzyxxxy
+--------
+x	y	z
+--------
+ACAACBCBAAABACBBCAABBCAACCBCBBCAACACBCCBBCBBACBABBABACBBCBCAABCCBCAACAACBAACCBCCBCBBBBACCABBCABBCCAA
+--------
+A	B	C
