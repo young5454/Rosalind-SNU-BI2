@@ -1,2 +1,2 @@
 # Rosalind-SNU-BI2
-Python codes for Rosalind SNU Bioinformatics II
+Rosalind codes for 2023 SNU Bioinformatics II Course
